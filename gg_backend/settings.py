@@ -46,6 +46,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    # 'mozilla_django_oidc'
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -55,9 +56,20 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'knox',
+    'surveys'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# AUTHENTICATION_BACKENDS = (
+#     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+# )
+#
+# OIDC_RP_CLIENT_ID = env('OIDC_RP_CLIENT_ID')
+# OIDC_RP_CLIENT_SECRET = env('OIDC_RP_CLIENT_SECRET')
+# OIDC_OP_AUTHORIZATION_ENDPOINT = env("OIDC_OP_AUTHORIZATION_ENDPOINT")
+# OIDC_OP_TOKEN_ENDPOINT = env("OIDC_OP_TOKEN_ENDPOINT")
+# OIDC_OP_USER_ENDPOINT = env("OIDC_OP_USER_ENDPOINT")
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
