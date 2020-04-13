@@ -8,7 +8,7 @@ from surveys.models import Survey
 class Answer(models.Model):
     survey_id = models.ForeignKey(Survey, on_delete=models.DO_NOTHING, null=False)
     user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=False)
-    answers = models.TextField()
+    answers = JSONField()
     answered = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
