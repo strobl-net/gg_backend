@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'knox',
-    'surveys'
+    'surveys',
+    'answers'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
