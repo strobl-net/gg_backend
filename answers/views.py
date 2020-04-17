@@ -17,6 +17,3 @@ class AnswerView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.order_by('id')
-
-    def perform_create(self, serializer):
-        serializer.is_valid()
