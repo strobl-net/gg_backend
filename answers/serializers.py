@@ -14,4 +14,4 @@ class AnswerSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('user_id is not supplied')
         if data.get('answers') is None:
             raise serializers.ValidationError('No answer is given')
-        return data
+        return Answer.objects.create(data)
