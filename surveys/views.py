@@ -1,13 +1,13 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions, filters
-
+from permissions.permissions import IsAdminOrReadOnly
 from .models import Survey
 from .serializers import SurveySerializer
 
 
 class SurveyView(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.AllowAny
+        IsAdminOrReadOnly
     ]
     queryset = Survey.objects.all()
     serializer_class = SurveySerializer
