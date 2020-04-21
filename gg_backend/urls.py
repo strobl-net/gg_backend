@@ -21,10 +21,12 @@ from knox import views as knox_views
 from accounts.views import RegisterAPI, LoginAPI, UserAPI
 from surveys.views import SurveyView
 from answers.views import AnswerView
+from accounts.views import ProfileView
 
 router = routers.DefaultRouter()
 router.register('api/surveys', SurveyView)
 router.register('api/answers', AnswerView)
+router.register('api/profiles', ProfileView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -7,7 +7,7 @@ from .serializers import AnswerSerializer
 
 class AnswerView(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer

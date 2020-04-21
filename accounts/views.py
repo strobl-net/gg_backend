@@ -1,7 +1,9 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, ProfileSerializer
+from .models import Profile
 
 
 class RegisterAPI(generics.GenericAPIView):
@@ -38,9 +40,23 @@ class LoginAPI(generics.GenericAPIView):
 
 class UserAPI(generics.RetrieveAPIView):
     permission_classes = [
-        permissions.IsAuthenticated,
+        permissions.IsAdminUser,
     ]
     serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user
+
+
+class ProfileView(viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['id', 'user', 'grade']
+    search_fields = ['id']
+
+    def get_queryset(self):
+        return self.queryset.order_by('id')

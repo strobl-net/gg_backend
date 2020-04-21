@@ -1,8 +1,7 @@
-from abc import ABC
-
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from .models import Profile
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -31,3 +30,9 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['grade', 'is_super_student', 'is_tech', 'is_teacher', 'is_super_teacher']
