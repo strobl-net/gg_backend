@@ -9,10 +9,10 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     grade = models.TextField(max_length=10, null=True, blank=True)
-    is_super_student = models.BooleanField(default=False)
-    is_tech = models.BooleanField(default=False)
-    is_teacher = models.BooleanField(default=False)
-    is_super_teacher = models.BooleanField(default=False)
+    is_super_student = models.BooleanField(default=False, null=False)
+    is_tech = models.BooleanField(default=False, null=False)
+    is_teacher = models.BooleanField(default=False, null=False)
+    is_super_teacher = models.BooleanField(default=False, null=False)
     phone_number = PhoneNumberField(blank=True)
 
     # in some cases, a user does not have grade (teacher / test account) which would cause an error. => None check!
@@ -21,6 +21,10 @@ class Profile(models.Model):
             return self.user.username
         else:
             return f'{self.user.username + " | " + self.grade}'
+
+    @property
+    def user_name(self):
+        return self.user.username
 
 
 @receiver(post_save, sender=User)

@@ -55,8 +55,8 @@ class ProfileView(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['id', 'user', 'grade']
-    search_fields = ['id']
+    filterset_fields = ['user', 'grade']
+    search_fields = ['user', 'grade']
 
     def get_queryset(self):
         return self.queryset.order_by('id')

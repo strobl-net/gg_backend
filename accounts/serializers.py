@@ -33,6 +33,8 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.CharField()
+
     class Meta:
         model = Profile
-        fields = ['grade', 'is_super_student', 'is_tech', 'is_teacher', 'is_super_teacher']
+        fields = ('user', 'grade', 'is_super_student', 'is_tech', 'is_teacher', 'is_super_teacher')

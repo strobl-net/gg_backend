@@ -141,3 +141,7 @@ dmypy.json
 cython_debug/
 
 .idea/*
+
+gg_backend/
+
+.vscode/
