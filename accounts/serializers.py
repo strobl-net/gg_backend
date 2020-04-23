@@ -33,8 +33,9 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = serializers.CharField()
+    user_name = serializers.ReadOnlyField()
+    user_email = serializers.ReadOnlyField()
 
     class Meta:
         model = Profile
-        fields = ('user', 'grade', 'is_super_student', 'is_tech', 'is_teacher', 'is_super_teacher')
+        fields = ('user_name', 'user_email', 'grade', 'is_super_student', 'is_tech', 'is_teacher', 'is_super_teacher')

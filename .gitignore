@@ -144,3 +144,7 @@ cython_debug/
 
 
 .vscode/
+
+gg_backend/bin/
+
+gg_backend/pyvenv.cfg

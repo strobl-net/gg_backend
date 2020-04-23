@@ -26,6 +26,10 @@ class Profile(models.Model):
     def user_name(self):
         return self.user.username
 
+    @property
+    def user_email(self):
+        return self.user.email
+
 
 @receiver(post_save, sender=User)
 def create_or_update_profile(sender, instance, created, **kwargs):
